@@ -32,6 +32,8 @@ public class Fraction
       return "0";
     } else if (this.d == 1) {
       return String.valueOf(this.n);
+    } else if (this.n / this.d > 1) {
+      return String.valueOf((int)(this.n / this.d)) + " " + String.valueOf(this.n % this.d) + "/" + String.valueOf(this.d);
     } else {
       return String.valueOf(this.n) + "/" + String.valueOf(this.d);
     }
@@ -67,8 +69,6 @@ public class Fraction
       this.n *= -1;
       this.d *= -1;
     }
-    // TODO: Add posibility for 2 1/2 - Mi 12 Aug 2015 19:11:52 CEST
-    
   }
 
   // Add another fraction
@@ -115,5 +115,35 @@ public class Fraction
   public void sub(int i)
   {
     this.add(new Fraction(i * -1, 1));
+  }
+
+  // Divide by fraction
+  public void div(Fraction f)
+  {
+    this.n *= f.d;
+    this.d *= f.n;
+    cancel();
+  }
+
+  // Divide by integer
+  public void div(int i)
+  {
+    this.d *= i;
+    cancel();
+  }
+
+  public static String e(int n)
+  {
+    Fraction f = new Fraction(1, 1);
+    for (int i = 1; i <= n; i++)
+    {
+      int x = 1;
+      for (int j = 1; j <= i; j++)
+      {
+        x *= j;
+      }
+      f.add(new Fraction(1, x));
+    }
+    return f.get();
   }
 }
