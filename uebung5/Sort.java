@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Sort
 {
 
-  public void mergesort(Comparable[] x)
+  public static void mergesort(Comparable[] x)
   {
     if (x.length == 1)
     {
