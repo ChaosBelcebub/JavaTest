@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Sort
 {
 
-  public void mergesort(Integer[] x)
+  public void mergesort(Comparable[] x)
   {
     if (x.length == 1)
     {
@@ -16,8 +16,8 @@ public class Sort
     }
 
     int a = x.length / 2;
-    Integer[] l = Arrays.copyOfRange(x, 0, a);
-    Integer[] r = Arrays.copyOfRange(x, a, x.length);
+    Comparable[] l = Arrays.copyOfRange(x, 0, a);
+    Comparable[] r = Arrays.copyOfRange(x, a, x.length);
     
     mergesort(l);
     mergesort(r);
@@ -26,7 +26,7 @@ public class Sort
     int rPos = 0;
     int i = 0;
     while (lPos < l.length && rPos < r.length) {
-      if (l[lPos] < r[rPos])
+      if (l[lPos].compareTo(r[rPos]) < 0)
       {
         x[i] = l[lPos];
         lPos++;
